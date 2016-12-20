@@ -8,6 +8,9 @@ init:
 	sudo apt-get install build-essential -y
 	sudo apt-get install libpq-dev -y
 	sudo apt-get remove nodejs -y
+	sudo apt-get remove cachefilesd -y
+	sudo rm /etc/default/cachefilesd
+	sudo cp /vagrant/cachefilesd /etc/default/
 	- sudo rm /usr/bin/nodejs
 	- sudo rm /usr/bin/npm
 	- sudo rm /usr/bin/node
