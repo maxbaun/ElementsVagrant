@@ -17,16 +17,16 @@ init:
 	. ~/.bashrc
 
 globals:
-	npm i -g nodemon
-	npm i -g concurrently
-	npm i -g sequelize-cli
-	npm i -g typescript@2.0.10
-	npm i -g node-sass
+	sudo npm i -g nodemon
+	sudo npm i -g concurrently
+	sudo npm i -g sequelize-cli
+	sudo npm i -g typescript@2.0.10
+	sudo npm i -g node-sass
 
 npm:
 	- cd /elements && npm install --no-bin-links --ignore-scripts
-	- cd /elements/client && npm install --no-bin-links
-	- cd /elements/server && npm install --no-bin-links
+	- cd /elements/client && npm install --no-bin-links --ignore-scripts
+	- cd /elements/server && npm install --no-bin-links --ignore-scripts
 	- cd /elements && npm rebuild node-sass --no-bin-links
 
 db:
@@ -36,5 +36,5 @@ migrate:
 	- cd /elements/server && npm rebuild libpq --no-bin-links
 	- cd /elements/server && npm rebuild bcrypt --no-bin-links
 	- cd /elements/ && tsc /elements/server/dbConfig.ts
-	- cd /elements/server/ && sequelize init
-	- cd /elements/server/ && sequelize db:migrate
+	- cd /elements/server/ && sudo sequelize init
+	- cd /elements/server/ && sudo sequelize db:migrate
