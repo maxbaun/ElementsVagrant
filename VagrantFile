@@ -15,11 +15,7 @@ Vagrant.configure("2") do |config|
     # Fix ssh collision if another vagrant is up
     config.vm.network :forwarded_port, guest: 22, host: 2208, id: "ssh", auto_correct: true
 
-    config.vm.synced_folder "../ElementsApplication", "/elements",
-		type: "rsync",
-		rsync__auto: true,
-		rsync__exclude: [".git/", "../ElementsApplication/node_modules/", "../ElementsApplication/client/node_modules/", "../ElementsApplication/server/", "server/"],
-		id: "elm"
+    config.vm.synced_folder "../ElementsApplication", "/elements"
 
     config.vm.provider :virtualbox do |vb|
         vb.customize [
@@ -49,6 +45,6 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", :privileged => false,
         inline: "cd /vagrant && make default"
 
-    # config.vm.provision "shell", :privileged => false,
-    #     inline: "cd /vagrant && make run", run: "always"
+    config.vm.provision "shell", :privileged => false,
+        inline: "cd /vagrant && make run", run: "always"
 end

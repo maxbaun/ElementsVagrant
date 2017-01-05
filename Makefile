@@ -1,7 +1,7 @@
 default: globals npm db migrate
 
 run:
-	cd /elements && npm run develop
+	cd /elements && nodemon server/bin/www
 
 init:
 	sudo apt-get update
